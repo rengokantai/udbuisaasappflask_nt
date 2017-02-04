@@ -49,3 +49,10 @@ COPY . .
 
 CMD gunicorn -b 0.0.0.0:8000 --access-logfile - "snakeeyes.app:create_app()"
 ```
+
+###24
+cleanup
+```
+docker-compose rm -f
+docker rmi -f $(docker images -qf dangling=true)
+```
