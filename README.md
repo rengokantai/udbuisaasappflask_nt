@@ -105,6 +105,11 @@ class TestPage(object):
         """ Privacy page should respond with a success 200. """
         response = client.get(url_for('page.privacy'))
         assert response.status_code == 200
+```
 
+###37
+```
+docker-compose exec website flake8 .
+docker-compose exec website flake8 . --exclude __init__.py
 ```
 
