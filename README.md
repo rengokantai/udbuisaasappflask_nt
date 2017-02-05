@@ -134,3 +134,28 @@ def cli(path):
     cmd = 'py.test --cov-report term-missing --cov {0}'.format(path)
     return subprocess.call(cmd, shell=True)
 ```
+compile and eval function
+```
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
+def get_command(self, ctx, name):
+    """
+        Get a specific command by looking up the module.
+
+        :param ctx: Click context
+        :param name: Command name
+        :return: Module's cli function
+        """
+
+    ns = {}
+
+    filename = os.path.join(cmd_folder, cmd_prefix + name + '.py')    
+
+    with open(filename) as f:
+        code = compile(f.read(), filename, 'exec')      #compile function
+        eval(code, ns, ns)                              #eval function
+
+    return ns['cli']
+```
