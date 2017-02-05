@@ -61,3 +61,8 @@ docker rmi -f $(docker images -qf dangling=true)
 ```
 docker-compose exec website py.test snakeeyes/tests
 ```
+###36
+```
+docker-compose exec website py.test --cov-report term-missing --cov snakeeyes
+```
+```
