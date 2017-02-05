@@ -113,3 +113,24 @@ docker-compose exec website flake8 .
 docker-compose exec website flake8 . --exclude __init__.py
 ```
 
+###42 
+Install Click first.then  
+cli/commands/cmd_cov.py
+```
+import subprocess
+
+import click
+
+
+@click.command()
+@click.argument('path', default='snakeeyes')
+def cli(path):
+    """
+    Run a test coverage report.
+
+    :param path: Test coverage path
+    :return: Subprocess call result
+    """
+    cmd = 'py.test --cov-report term-missing --cov {0}'.format(path)
+    return subprocess.call(cmd, shell=True)
+```
