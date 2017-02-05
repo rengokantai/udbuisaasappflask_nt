@@ -159,3 +159,10 @@ def get_command(self, ctx, name):
 
     return ns['cli']
 ```
+
+
+###43
+```
+docker-compose exec website snakeeyes
+```
+
