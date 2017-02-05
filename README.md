@@ -65,4 +65,46 @@ docker-compose exec website py.test snakeeyes/tests
 ```
 docker-compose exec website py.test --cov-report term-missing --cov snakeeyes
 ```
+test and original file:
+
+snakeeyes/blueprints/page/views.py
 ```
+from flask import Blueprint, render_template
+
+page = Blueprint('page', __name__, template_folder='templates')
+
+
+@page.route('/')
+def home():
+    return render_template('page/home.html')
+
+
+@page.route('/terms')
+def terms():
+    return render_template('page/terms.html')
+
+
+@page.route('/privacy')
+def privacy():
+    return render_template('page/privacy.html')
+```
+snakeeyes/tests/page/test_views.py
+```
+class TestPage(object):
+    def test_home_page(self, client):
+        """ Home page should respond with a success 200. """
+        response = client.get(url_for('page.home'))
+        assert response.status_code == 200
+
+    def test_terms_page(self, client):
+        """ Terms page should respond with a success 200. """
+        response = client.get(url_for('page.terms'))
+        assert response.status_code == 200
+
+    def test_privacy_page(self, client):
+        """ Privacy page should respond with a success 200. """
+        response = client.get(url_for('page.privacy'))
+        assert response.status_code == 200
+
+```
+
