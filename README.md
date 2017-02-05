@@ -56,3 +56,8 @@ cleanup
 docker-compose rm -f
 docker rmi -f $(docker images -qf dangling=true)
 ```
+
+###35
+```
+docker-compose exec website py.test snakeeyes/tests
+```
