@@ -183,3 +183,24 @@ snakeeyes/blueprints/contact/templates/contact/index.html
 ```
 {% import 'macros/form.html' as f with context %}
 ```
+call this function
+```
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 well">
+      {% call f.form_tag('contact.index') %}
+        <legend>We're here to answer your questions</legend>
+
+        {% call f.form_group(form.email, css_class='margin-bottom',
+                             placeholder='E-mail address') %}
+        {% endcall %}
+
+        {% call f.form_group(form.message, css_class='margin-bottom',
+                             placeholder='The more we know, the easier it will be to help you',
+                             rows='12') %}
+        {% endcall %}
+
+        <button type="submit" class="btn btn-primary">Send e-mail</button>
+      {% endcall %}
+    </div>
+  </div>
+  ```
