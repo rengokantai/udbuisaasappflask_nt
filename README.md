@@ -166,3 +166,13 @@ def get_command(self, ctx, name):
 docker-compose exec website snakeeyes
 ```
 
+##11
+###51
+by default scp cannot copy hidden files. [stackoverflow](http://serverfault.com/questions/21580/how-to-make-scp-copy-hidden-files)
+```
+scp -rp src/. user@server:dest/
+```
+Or better, use rsync
+```
+rsync -av src/ user@server:dest/
+```
